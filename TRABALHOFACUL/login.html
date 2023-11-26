@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilo/css/login.css">
+    <link rel="stylesheet" href="estilo/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Cadastro</title>
+</head>
+<body>
+     <!---------------------------- BOTÕES DE ACESSIBILIDADE--------------------------------------------->
+     <div class="btn-acessibilidade">
+        <button class="btn btn-modoNoturno" onclick="myFunction()"><img src="img/modo-escuro.png" id="img-btn" alt="Modo Escuro"></button>
+        <button class="btn btn-danger">Login</button>
+    <!--<button onclick="letra()"><img src="acessibilidade.png" alt="modo letra alta"></button> --------->
+    </div>
+    <form id="cadastro">
+        <img src="/img/imagens/telecall.svg" class="telecall">
+        <br>
+        <div id="errorEnviar"></div>
+        <div id="sucessEnviar"></div>
+         <!--------------------------------------FORMULÁRIO---------------------------------------------------->
+    <form>
+            <div class="input-form">
+                <input type="text" name="login"  class="inputs" required>
+                <label for="login">Login</label>
+            </div>
+
+            <div class="input-form">
+                <input type="password" name="senha"  id="senha" class="inputs" required>
+                <label for="senha">Senha</label>
+           </div>
+    <!--------------------------------------MOSTRAR SENHA------------------------------------------------->
+           <div class="input-check">
+                <input type="checkbox" name="mstrSenha" id="check">Mostrar Senha <br>
+           </div>
+    <!--------------------------------------BOTÕES DE CADASTRO-------------------------------------------->
+            <div class="bnt-login">
+                <input type="submit" value="Entrar" class="btn btn-danger">
+                <input type="reset" value="Cancelar" class="btn btn-danger">
+            </div>
+    <!--------------------------------------LINKS DE NAVEGAÇÃO--------------------------------------------->
+            <div class="links-form">
+                <a href="cadastro.html">Cadastrar</a>
+                <a href="#recuperarSenha">Recuperar Senha</a>
+            </div>
+
+    </form>
+</body>
+<script>
+    const senha = document.getElementById("senha");
+    const check = document.getElementById("check");
+
+    check.onchange = function(e)    {
+        senha.type = check.checked ? "text" : "password";
+    };
+</script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- SCRIPT DO MAPA -->
+<script src="/script/mapa.js"></script>                           <!-- SCRIPT DO MAPA -->
+<script src="/script/script.js"></script>                         <!-- SCRIPT DAS FUNCIONALIDADES DA PAGINA INICIAL -->
+<script src="/script/modal.js"></script>                          <!-- SCRIPT DO MODAL -->
+<script src="./script/acessibilidade.js"></script>
+<script src="/script/regex.js"></script>
+</html>

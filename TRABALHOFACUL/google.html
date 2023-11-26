@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo/css/gvcalls.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <title> Google Verified Calls </title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"  rel="noopener noreferrer"><img src="img/logo-telecall.png" alt="Logo"></a>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html"  rel="noopener noreferrer">O que é CpaaS?</a></li>
+            <li class="dropdown">
+                <a href="#sessao2" class="dropbtn">Serviços</a>
+                <div class="dropdown-content">
+                    <a href="2fa.html">2FA</a>
+                    <a href="google.html">Google Verified</a>
+                    <a href="numero.html">Número Máscara</a>
+                    <a href="sms.html">SMS Programável</a>
+                </div>
+            </li>
+            <li><a href="#openModalBtn" id="openModalBtn">Fale Conosco</a></li>
+        </ul>
+        <div class="bnt-form">
+            <button class="btn btn-modoNoturno" onclick="myFunction()"><img src="img/modo-escuro.png" id="img-btn" alt="Modo Escuro"></button>
+            <button class="btn btn-danger">Login</button>
+        </div>
+    </header>
+    <!-- COMEÇO DO MODAL -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>Fale Conosco</h2>
+            <p>Fale com a nossa equipe para uma Assistência Personalizada</p>
+            <form>                                                                      <!-- FORMULARIO DO MODAL -->
+                <div class="modal-inputs">  
+                <label for="inputNome">Nome:</label>
+                <input type="text" id="inputNome" name="inputNome" class="inputs" required>
+    
+                <label for="inputEmail">Email:</label>
+                <input type="email" id="inputEmail" name="inputEmail" class="inputs" required>
+                
+                <label for="inputEmpresa">Empresa:</label>
+                <input type="text" id="inputEmpresa" name="inputEmpresa" class="inputs" required>
+
+                <label for="inputTelefone">Telefone:</label>
+                <input type="number" id="inputTelefone" name="inputTelefone" class="inputs" required>
+
+                <label for="inputAssunto">Assunto:</label><br><br>
+                    <select>
+                        <option value="vazio">Selecione o Assunto</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="reclameAqui">Reclame Aqui</option>
+                        <option value="suporteTecnico">Suporte Técnico</option>
+                        <option value="trabalheConosco">Trabalhe Conosco</option>
+                      </select>
+                <br><br>
+                    <!-- BOTÕES DA PÁGINA -->
+                    <button type="button" id="submitBtn">Enviar</button>
+                    <button type="reset" id="submitBtn">Limpar Campo</button>
+                    <br><br>
+                    <div id="mapa"></div>      <!-- MAPA -->
+                    <br><br>
+                        <ol class="nossas-lojas">     <!-- ENDEREÇO DAS LOJAS-->
+                            <li class="endereco-loja"><span class="lojas">LOJA - BONSUCESSO</span><br>
+                                Rio de Janeiro, 332
+                                
+                                Rua Souza Barros, 450
+                                
+                                Engenho Novo
+                                
+                                Seg-Sex: 09hrs-19hrs, Sáb:09hrs-19hrs, Dom:-08hrs-14hrs
+                                <br>
+                                <a href="https://api.whatsapp.com/send?phone=5521988266553&text=Olá,%20como%20vai?">
+                                    <img src="/img/icon-contato.gif" alt="icone do whatsapp" class="icones-contato">
+                                </a>
+                                <a href="mailto:charlesbastos@souunisuam.com.br ?subject=Assunto do E-mail">
+                                    <img src="/img/icon-email.png" alt="icone do email" class="icones-contato">
+                                </a>
+                            </li><br>
+                            <li class="endereco-loja"><span class="lojas">LOJA - CENTRAL DO BRASIL</span><br>
+                                Rio de Janeiro, 556
+                                
+                                Praça Cristiano Otoni, s/n°
+                                
+                                Rio de Janeiro
+                                
+                                Seg-Sex: 09hrs-21hrs, Sáb:08hrs-16hrs, Dom:08hrs-14hrs
+                                <br>
+                                <a href="https://api.whatsapp.com/send?phone=5521988266553&text=Olá,%20como%20vai?">
+                                    <img src="/img/icon-contato.gif" alt="icone do whatsapp" class="icones-contato">
+                                </a>
+                                <a href="mailto:charlesbastos@souunisuam.com.br ?subject=Assunto do E-mail">
+                                    <img src="/img/icon-email.png" alt="icone do email" class="icones-contato">
+                                </a>
+                            </li><br>
+                            <li class="endereco-loja"><span class="lojas">LOJA - NOVA AMERICA SHOPPING</span><br>
+                                Rio de Janeiro, 225
+                                
+                                Avenida Pastor Martin Luther King Jr, 126
+                                
+                                Rio De Janeiro
+                                
+                                Seg-Sex: 10hrs-22hrs, Sáb:10hrs-22hrs, Dom:13hrs-21hrs
+                                <br>
+                                <a href="https://api.whatsapp.com/send?phone=5521988266553&text=Olá,%20como%20vai?">
+                                    <img src="/img/icon-contato.gif" alt="icone do whatsapp" class="icones-contato">
+                                </a>
+                                <a href="mailto:charlesbastos@souunisuam.com.br ?subject=Assunto do E-mail">
+                                    <img src="/img/icon-email.png" alt="icone do email" class="icones-contato">
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+            </form>
+        </div>
+    </div>
+        <!-- FIM DO MODAL -->
+    <div class="ggl">
+    <h1> Google Verified Calls </h1>
+    </div>
+    <div class="img_ggl">
+    <img id="google" src="img/imagens/gvc.png">
+    </div>
+    <br>
+    <h3>Como funciona? </h3>
+    <hr id="hr1">
+    <br>
+    <div class="como_funciona">
+        <div class="google1">
+        <img id="g1" src="img/imagens/google1-removebg-preview.png">
+        <br>
+        <p>
+        Uma chamada telefônica
+        de uma empresa assinante
+        é feita para um cliente
+        potencial ou existente.
+        </p>
+    </div>
+    <div class="google2">
+        <img id="g2" src="img/imagens/google2-removebg-preview.png">
+       <br>
+       <p>
+        Em nanossegundos, a
+       solicitação é encaminhada
+       para a plataforma da Telecall
+       que processa a chamada e
+       adiciona as informações
+       verificadas antes de
+       encaminhá-la ao destinatário.
+    </p>
+    </div>
+    <div class="googlet">
+        <img id="gt" src="img/imagens/googlet-removebg-preview.png">
+        <br>
+        <p>
+        As informações aparecem
+        na tela do celular do
+        recipiente que atenderá a
+        ligação com uma chamada
+        de voz normal.
+        </p>
+    </div>
+    </div>
+    <h3> Benefícios </h3>
+    <hr>
+    <br>
+    <div class="beneficios">
+    <ul>
+        <p>
+        <li> <strong> Estabeleça Confiança </strong> </li>
+        <p> Clientes são mais propensos a atender chamadas de organizações com os quais estão
+         familiarizadas e com as quais já tem relação. </p>
+         <br>
+         <li> <strong> Agilize a Conexão </strong> </li>
+         <p>Quando o motivo da chamada é claro, a chance de o cliente atender é muito maior e a conexão
+         com ele é mais rápida e eficiente. </p>
+         <br>
+         <li> <strong> Melhore a Experiência do Cliente </strong> </li>
+         <p>O nome da marca, logotipo e a visualização do motivo da chamada oferecem uma Experiência
+         melhor e muito mais amigável para o cliente. </p>
+         <br>
+        </p>
+    </ul>
+    </div>
+  <!-- INICIO DO FOOTER-->
+  <footer>
+    <p id="copyright">Copyright &#169; 2023 | Todos os direitos reservados.<br><span class="desenvolvedores"
+    >Desenvolvido por Iago e Samuel</span></p>
+    <button id="btnVoltarTopo" onclick="voltarAoTopo()">Voltar ao Topo</button>
+</footer>
+    <!-- FIM DO FOOTER -->
+</body>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- SCRIPT DO MAPA -->
+<script src="script/modal.js"></script>
+<script src="script/mapa.js"></script>
+<script src="script/script.js"></script>
+</html>

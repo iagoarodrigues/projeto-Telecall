@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <title>PROJETO</title>
+</head>
+<body>
+    <!-- COMEÇO DO HEADER -->
+    <header>
+        <div class="logo">
+            <a href="index.html"  rel="noopener noreferrer"><img src="img/logo-telecall.png" alt="Logo"></a>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html"  rel="noopener noreferrer">O que é CpaaS?</a></li>
+            <li class="dropdown">
+                <a href="#sessao2" class="dropbtn">Serviços</a>
+                <div class="dropdown-content">
+                    <a href="2fa.html">2FA</a>
+                    <a href="google.html">Google Verified</a>
+                    <a href="numero.html">Número Máscara</a>
+                    <a href="sms.html">SMS Programável</a>
+                </div>
+            </li>
+            <li><a href="#openModalBtn" id="openModalBtn">Fale Conosco</a></li>
+        </ul>
+        <div class="bnt-form">
+            <button class="btn btn-modoNoturno" onclick="myFunction()"><img src="img/modo-escuro.png" id="img-btn" alt="Modo Escuro"></button>
+            <button class="btn btn-danger">Login</button>
+        </div>
+    </header>
+        <!-- FIM DO HEADER -->
+
+        <!-- COMEÇO DO MODAL -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>Fale Conosco</h2>
+            <p>Fale com a nossa equipe para uma Assistência Personalizada</p>
+            <form>                                                                      <!-- FORMULARIO DO MODAL -->
+                <div class="modal-inputs">  
+                <label for="inputNome">Nome:</label>
+                <input type="text" id="inputNome" name="inputNome" class="inputs" required>
+    
+                <label for="inputEmail">Email:</label>
+                <input type="email" id="inputEmail" name="inputEmail" class="inputs" required>
+                
+                <label for="inputEmpresa">Empresa:</label>
+                <input type="text" id="inputEmpresa" name="inputEmpresa" class="inputs" required>
+
+                <label for="inputTelefone">Telefone:</label>
+                <input type="number" id="inputTelefone" name="inputTelefone" class="inputs" required>
+
+                <label for="inputAssunto">Assunto:</label><br><br>
+                    <select>
+                        <option value="vazio">Selecione o Assunto</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="reclameAqui">Reclame Aqui</option>
+                        <option value="suporteTecnico">Suporte Técnico</option>
+                        <option value="trabalheConosco">Trabalhe Conosco</option>
+                      </select>
+                <br><br>
+                    <!-- BOTÕES DA PÁGINA -->
+                    <button type="button" id="submitBtn">Enviar</button>
+                    <button type="reset" id="submitBtn">Limpar Campo</button>
+                    <br><br>
+                    <div id="mapa"></div>      <!-- MAPA -->
+                    <br><br>
+                        <ol class="nossas-lojas">     <!-- ENDEREÇO DAS LOJAS-->
+                            <li class="endereco-loja"><span class="lojas">LOJA - BONSUCESSO</span><br>
+                                Rio de Janeiro, 332
+                                
+                                Rua Souza Barros, 450
+                                
+                                Engenho Novo
+                                
+                                Seg-Sex: 09hrs-19hrs, Sáb:09hrs-19hrs, Dom:-08hrs-14hrs
+                                <br>
+                                <a href="https://api.whatsapp.com/send?phone=5521988266553&text=Olá,%20como%20vai?">
+                                    <img src="/img/icon-contato.gif" alt="icone do whatsapp" class="icones-contato">
+                                </a>
+                                <a href="mailto:charlesbastos@souunisuam.com.br ?subject=Assunto do E-mail">
+                                    <img src="/img/icon-email.png" alt="icone do email" class="icones-contato">
+                                </a>
+                            </li><br>
+                            <li class="endereco-loja"><span class="lojas">LOJA - CENTRAL DO BRASIL</span><br>
+                                Rio de Janeiro, 556
+                                
+                                Praça Cristiano Otoni, s/n°
+                                
+                                Rio de Janeiro
+                                
+                                Seg-Sex: 09hrs-21hrs, Sáb:08hrs-16hrs, Dom:08hrs-14hrs
+                                <br>
+                                <a href="https://api.whatsapp.com/send?phone=5521988266553&text=Olá,%20como%20vai?">
+                                    <img src="/img/icon-contato.gif" alt="icone do whatsapp" class="icones-contato">
+                                </a>
+                                <a href="mailto:charlesbastos@souunisuam.com.br ?subject=Assunto do E-mail">
+                                    <img src="/img/icon-email.png" alt="icone do email" class="icones-contato">
+                                </a>
+                            </li><br>
+                            <li class="endereco-loja"><span class="lojas">LOJA - NOVA AMERICA SHOPPING</span><br>
+                                Rio de Janeiro, 225
+                                
+                                Avenida Pastor Martin Luther King Jr, 126
+                                
+                                Rio De Janeiro
+                                
+                                Seg-Sex: 10hrs-22hrs, Sáb:10hrs-22hrs, Dom:13hrs-21hrs
+                                <br>
+                                <a href="https://api.whatsapp.com/send?phone=5521988266553&text=Olá,%20como%20vai?">
+                                    <img src="/img/icon-contato.gif" alt="icone do whatsapp" class="icones-contato">
+                                </a>
+                                <a href="mailto:charlesbastos@souunisuam.com.br ?subject=Assunto do E-mail">
+                                    <img src="/img/icon-email.png" alt="icone do email" class="icones-contato">
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+            </form>
+        </div>
+    </div>
+        <!-- FIM DO MODAL -->
+
+
+        <!--CONTEUDO INICIAL DO CORPO -->
+    <div class="conteudo">
+            <div class="text-content">
+                <h1 id="titulo-conteudo" >Plataforma CPaaS</h1>
+                <p id="text-color">O CPaaS, com sua escalabilidade, flexibilidade, 
+                    autenticação e segurança aprimoradas, 
+                    está revolucionando o modo como as empresas habilitadas 
+                    em nuvem implementam comunicações de voz, SMS e vídeo.</p>
+            </div>
+            <img id="conteudo-foto" src="img/conteudo.png" alt="CPaaS">
+        </div>
+        <!-- FIM DO CONTEUDO INICIAL -->
+
+        <!-- CONTEUDO DE SERVIÇOS -->
+        <div class="conteudo-servicos">
+            <h1 id="titulo-servicos">Nossas Soluções</h1>
+            <div class="servicos">
+                <div class="servico-item">
+                    <img class="servico-imagem" src="img/2fa.png" alt="">
+                    <p class="paragrafo">O 2FA é um procedimento de segurança que garante que serão necessários
+                        2 fatores únicos para liberação de uma ação.</p>
+                </div>
+        
+                <div class="servico-item">
+                    <img class="servico-imagem" src="img/numero-mascara.png" alt="">
+                    <p class="paragrafo">O 2FA é um procedimento de segurança que garante que serão necessários
+                        2 fatores únicos para liberação de uma ação.</p>
+                </div>
+        
+                <div class="servico-item">
+                    <img class="servico-imagem" src="img/verificado.png" alt="">
+                    <p class="paragrafo">O 2FA é um procedimento de segurança que garante que serão necessários
+                        2 fatores únicos para liberação de uma ação.</p>
+                </div>
+        
+                <div class="servico-item">
+                    <img class="servico-imagem" src="img/sms-programavel.png" alt="">
+                    <p class="paragrafo">O 2FA é um procedimento de segurança que garante que serão necessários
+                        2 fatores únicos para liberação de uma ação.</p>
+                </div>
+            </div>
+        </div>
+        <!-- FIM DO CONTEUDO SERVIÇOS -->
+
+        <!-- CONTEUDO CPAAS -->
+        <div class="conteudo-cpaas">
+            <div class="cpaas">
+                <div class="cpaas-texto" id="sessao1">
+                    <h1 id="titulo-cpaas">CPaaS: O que é?</h1>
+                    <h2 id="subtitulo-cpaas">Communications Plataform as a Service</h2>
+                    <h3 id="subtitulo-cpaas3">Plataforma de Comunicação como Serviço</h3>
+                    <p id="paragrafo-cpaas">É uma solução de software de comunicação que atua como uma base sobre a qual desenvolvedores podem integrar uma variedade de aplicativos. Métodos de comunicação típicos, como voz, chamadas de vídeo ou mensagens de texto SMS, podem ser incorporados em outros sistemas por meio de APIs que se conectam à plataforma CPaaS. Essas APIs permitem que as empresas expandam suas ofertas sem a necessidade de hardware ou software adicional.</p>
+                </div>
+                <img src="img/aplicativo.png" alt="" id="imagem-cpaas">
+            </div>
+        </div>
+        <!-- FIM DO CONTEUDO CPAAS-->
+
+        <!-- CONTEUDO USO -->
+        <div class="conteudo-uso" id="sessao2">
+            <div class="como-usar">
+                <h1 id="titulo-uso">Como as empresas usam o CPaaS?</h1>
+                <div class="card-group">
+                    <div class="card" >
+                    <img src="img/logistica.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Logística</h5>
+                        <h7  class="card-title">Acesso seguro com 2FA.</h7>
+                        <p class="card-text">
+                            Uso de números mascarados
+                            para proteção de funcionário
+                            e cliente.
+                            Mantenha o cliente
+                            informado sobre entrega e
+                            serviços..</p>
+                    </div>
+                    </div>
+                    <div class="card">
+                    <img src="img/varejo.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Varejo</h5>
+                        <h7  class="card-title">Compra segura com 2FA.</h7>
+                        <p class="card-text">
+                            Avisos sobre compras e
+                            entregas.
+                            
+                            Upsell com novas ofertas e
+                            vantagens via SMS ou
+                            Verified Calling.</p>
+                    </div>
+                    </div>
+                    <div class="card">
+                    <img src="img/call-center.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Call Center</h5>
+                        <h7  class="card-title" id="text-size">Melhore taxas de abertura
+                            utilizando alertas SMS para
+                            confirmações.</h7>
+                        <p class="card-text">
+                            Economia de números com o
+                            uso de um único número
+                            máscara por todos os agentes.
+                            
+                            Verified Calling para
+                            confirmação de
+                            agendamentos.</p>
+                    </div>
+                    </div>
+                    <div class="card">
+                        <img src="img/saude.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Saúde</h5>
+                        <h7  class="card-title">Acesso seguro com 2FA.</h7>
+                        <p class="card-text">
+                            Melhore o agendamento e
+                            reduza faltas com lembretes por SMS.
+                            
+                            Tokens de autorização para
+                            procedimentos com 2FA.</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+            </div>
+        </div>
+    </div>
+    </div>
+        <!-- FIM DO CONTEUDO  USO-->
+
+        <!-- INICIO DO FOOTER-->
+<footer>
+        <p id="copyright">Copyright &#169; 2023 | Todos os direitos reservados.<br><span class="desenvolvedores"
+        >Desenvolvido por Iago e Samuel</span></p>
+        <button id="btnVoltarTopo" onclick="voltarAoTopo()">Voltar ao Topo</button>
+</footer>
+        <!-- FIM DO FOOTER -->
+</body>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- SCRIPT DO MAPA -->
+<script src="/script/mapa.js"></script>                           <!-- SCRIPT DO MAPA -->
+<script src="/script/script.js"></script>                         <!-- SCRIPT DAS FUNCIONALIDADES DA PAGINA INICIAL -->
+<script src="/script/modal.js"></script>                          <!-- SCRIPT DO MODAL -->
+</html>
